@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<Head>
+    <title></title>
+</Head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+</style>
+<body>
+<h1 text-align="center">Welcome to URL shortner</h1>
+<div>
+    <h3 text-align="right"><a href="/logout">Logout</a></h3>
+    <form name="register" th:action="@{/shorten}" method="post">
+        <fieldset>
+            <legend>Shorten the url</legend>
+            <label for="url">Enter your url here:</label><br>
+            <input type="text" id="url" name="url">
+            <button type="submit">Shorten</button>
+        </fieldset>
+
+        <table aria-describedby="result">
+            <th>Result Here</th>
+            <tr>
+                <td><strong>Original Url</strong></td>
+                <td><strong>Shortened Url</strong></td>
+            </tr>
+            <tr>
+                <td th:text="${originalurl}"></td>
+                <td th:text="${shortenedurl}"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+</body>
+</html>
+
