@@ -1,6 +1,7 @@
 package com.shortcut.shortener.services;
 
 import com.google.cloud.firestore.DocumentSnapshot;
+import com.shortcut.shortener.common.TestParent;
 import com.shortcut.shortener.constants.ApplicationConstants;
 import com.shortcut.shortener.domains.UserDetails;
 import com.shortcut.shortener.repositories.CommonRepository;
@@ -23,7 +24,7 @@ import java.util.concurrent.ExecutionException;
  * @since 2022-05-28
  */
 @ExtendWith(MockitoExtension.class)
-class UserServiceTest {
+class UserServiceTest extends TestParent {
 
     @InjectMocks
     private UserService userService;
@@ -48,7 +49,9 @@ class UserServiceTest {
 
         UserDetails userDetails = getUserDetails();
         mockFirestoreCall(Boolean.FALSE);
+        // assert user created
         Assertions.assertTrue(userService.registerUser(userDetails));
+        // verify user details creation db transaction happened or not
         Mockito.verify(mockCommonRepository, Mockito.times(1))
                 .createDocument(userDetails, ApplicationConstants.COLLECTION_SHORTENER_USERS, userDetails.getEmail());
     }
@@ -64,7 +67,9 @@ class UserServiceTest {
 
         UserDetails userDetails = getUserDetails();
         mockFirestoreCall(Boolean.TRUE);
+        // assert user not created
         Assertions.assertFalse(userService.registerUser(userDetails));
+        // verify no db transaction happened.
         Mockito.verify(mockCommonRepository, Mockito.times(0))
                 .createDocument(userDetails, ApplicationConstants.COLLECTION_SHORTENER_USERS, userDetails.getEmail());
     }
@@ -79,13 +84,6 @@ class UserServiceTest {
     void exceptionWhileUserRegistrationTest() throws ExecutionException, InterruptedException {
         Mockito.when(mockCommonRepository.getDocument(Mockito.anyString(), Mockito.anyString())).thenThrow(InterruptedException.class);
         Assertions.assertFalse(userService.registerUser(getUserDetails()));
-    }
-
-    private UserDetails getUserDetails() {
-        UserDetails userDetails = new UserDetails();
-        userDetails.setEmail("testemail@test.com");
-        userDetails.setPassword("password");
-        return userDetails;
     }
 
     private void mockFirestoreCall(Boolean userExists) throws InterruptedException, ExecutionException {
