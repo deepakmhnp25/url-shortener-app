@@ -49,7 +49,7 @@ public class UserService {
                 commonRepository.createDocument(userDetails, ApplicationConstants.COLLECTION_SHORTENER_USERS, userDetails.getEmail());
                 return Boolean.TRUE;
             }
-            // user exists
+            // return false when user already exists
             return Boolean.FALSE;
         } catch (Exception exception) {
             logger.error("Unexpected error occured. Please see the detalis {}", exception.getMessage());
