@@ -1,5 +1,6 @@
 package com.shortcut.shortener.controllers;
 
+import com.shortcut.shortener.constants.ApplicationConstants;
 import com.shortcut.shortener.constants.EndpointConstants;
 import com.shortcut.shortener.domains.UrlDetails;
 import com.shortcut.shortener.services.ShortenerService;
@@ -44,9 +45,9 @@ public class ShortenerController {
     public String shortenUrl(UrlDetails urlDetails, Model model){
         // service call to get the url shortened
         shortenerService.shortenUrl(urlDetails);
-        model.addAttribute("originalurl", urlDetails.getUrl());
-        model.addAttribute("shortenedurl", urlDetails.getShortenedUrl());
-        return "shorturl";
+        model.addAttribute(ApplicationConstants.ORIGINAL_URL, urlDetails.getUrl());
+        model.addAttribute(ApplicationConstants.SHORTENED_URL, urlDetails.getShortenedUrl());
+        return ApplicationConstants.SHORTEN_URL_PAGE;
     }
 
     /**

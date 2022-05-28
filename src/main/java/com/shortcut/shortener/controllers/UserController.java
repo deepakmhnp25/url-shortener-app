@@ -31,7 +31,7 @@ public class UserController {
     @GetMapping(EndpointConstants.HOME)
     public ModelAndView registerUserPageLoad() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName(ApplicationConstants.VIEW_REGISTRATION);
+        modelAndView.setViewName(ApplicationConstants.REGISTRATION_PAGE);
         return modelAndView;
     }
 
@@ -44,7 +44,8 @@ public class UserController {
     @PostMapping(EndpointConstants.REGISTER)
     public String registerUser(UserDetails userDetails){
         // Service method to get the user registred to datastore
-        return userService.registerUser(userDetails) ? "redirect:/login" : "/registrationerror";
+        return userService.registerUser(userDetails) ?
+                ApplicationConstants.REDIRECT_LOGIN : ApplicationConstants.REGISTRATION_ERROR_PAGE;
     }
 
 }
