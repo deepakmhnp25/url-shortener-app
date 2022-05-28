@@ -10,17 +10,30 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Starting point of the application.
+ * This application has a user registration , login functionality.
+ * once logged in you can shorten the url and use the shortened url anywhere
+ * to load your orignal url
+ * Database connection, and tomcat server startup initialized here.
+ *
+ * @author Deepak Mohan
+ * @version 0.1
+ * @since 2022-05-28
+ */
 @SpringBootApplication
 public class UrlShortenerAppApplication {
 
 	public static void main(String[] args) throws IOException {
 
+		// Loading the serviceAccountKey for firestore db
 		ClassPathResource classPathResource = new ClassPathResource("serviceAccountKey.json");
 		InputStream inputStream = classPathResource.getInputStream();
 		FirebaseOptions options = new FirebaseOptions.Builder()
 				.setCredentials(GoogleCredentials.fromStream(inputStream))
 				.build();
 		FirebaseApp.initializeApp(options);
+		// Application initialization
 		SpringApplication.run(UrlShortenerAppApplication.class, args);
 	}
 

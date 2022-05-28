@@ -13,12 +13,11 @@ table, th, td {
 <body>
 <h1 text-align="center">Welcome to URL shortner</h1>
 <div>
-    <h3 text-align="right"><a href="/logout">Logout</a></h3>
     <form name="register" th:action="@{/shorten}" method="post">
         <fieldset>
             <legend>Shorten the url</legend>
             <label for="url">Enter your url here:</label><br>
-            <input type="text" id="url" name="url">
+            <input type="url" id="url" name="url">
             <button type="submit">Shorten</button>
         </fieldset>
 
@@ -35,7 +34,7 @@ table, th, td {
         </table>
     </form>
 </div>
-
+<h3 style="text-align:center"><a href="/logout">Logout</a></h3>
 
 </body>
 </html>

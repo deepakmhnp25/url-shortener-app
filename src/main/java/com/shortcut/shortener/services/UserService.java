@@ -1,9 +1,9 @@
 package com.shortcut.shortener.services;
 
 import com.google.cloud.firestore.DocumentSnapshot;
-import com.shortcut.shortener.repositories.CommonRepository;
 import com.shortcut.shortener.constants.ApplicationConstants;
 import com.shortcut.shortener.domains.UserDetails;
+import com.shortcut.shortener.repositories.CommonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,10 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * User service which register the user to the application.
+ *
+ * @author Deepak Mohan
+ * @version 0.1
+ * @since 2022-05-28
  */
 @Service
 public class UserService {
@@ -30,19 +34,22 @@ public class UserService {
      * This method check if the user already exists. register the user if not exist.
      *
      * @param userDetails
-     * @return boolean
+     * @return boolean value indicates user regsitered or not
      * @throws ExecutionException
      * @throws InterruptedException
      */
     public boolean registerUser(UserDetails userDetails) {
         try {
+            // Check the db if there is a user exists for the same email id
             DocumentSnapshot document = commonRepository.getDocument(ApplicationConstants.COLLECTION_SHORTENER_USERS, userDetails.getEmail());
-            /*Register user only if the user not exist*/
+
+            // Register user only if the user not exist
             if (!document.exists()) {
                 userDetails.setPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
                 commonRepository.createDocument(userDetails, ApplicationConstants.COLLECTION_SHORTENER_USERS, userDetails.getEmail());
                 return Boolean.TRUE;
             }
+            // user exists
             return Boolean.FALSE;
         } catch (Exception exception) {
             logger.error("Unexpected error occured. Please see the detalis {}", exception.getMessage());

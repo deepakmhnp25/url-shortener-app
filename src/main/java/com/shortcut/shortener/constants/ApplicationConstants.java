@@ -1,5 +1,12 @@
 package com.shortcut.shortener.constants;
 
+/**
+ * This class holds all the application level constant values.
+ *
+ * @author Deepak Mohan
+ * @version 0.1
+ * @since 2022-05-28
+ */
 public class ApplicationConstants {
 
     /*Utility classes, which are collections of static members, are not meant to be instantiated*/

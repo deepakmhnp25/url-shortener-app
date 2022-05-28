@@ -15,6 +15,10 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Login service which authenticates the user.
+ *
+ * @author Deepak Mohan
+ * @version 0.1
+ * @since 2022-05-28
  */
 @Service
 public class LoginService implements UserDetailsService {
@@ -24,36 +28,42 @@ public class LoginService implements UserDetailsService {
 
     /**
      * This method loads the user and creates the user details which is required for spring security authentication
-     * @param email
-     * @return UserDetails
+     *
+     * @param email of the user
+     * @return UserDetails object
      * @throws UsernameNotFoundException
      */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-        try {
-            DocumentSnapshot document = commonRepository.getDocument(ApplicationConstants.COLLECTION_SHORTENER_USERS, email);
-            return authenticate(document);
-        } catch (InterruptedException | ExecutionException e) {
-            Thread.currentThread().interrupt();
-            throw new ShortenerException(e.getMessage());
-        }
+        return authenticate(email);
     }
 
     /**
-     * This maps the user details from db.
-     * @param document
+     * This metod fetches the user details from db and prepares the LoginDetails to be used with security module
+     *
+     * @param email of the user
      * @return LoginDetails
      */
-    private LoginDetails authenticate(DocumentSnapshot document) {
-        if(document.exists()){
-            com.shortcut.shortener.domains.UserDetails userDetails
-                    = document.toObject(com.shortcut.shortener.domains.UserDetails.class);
-            return new LoginDetails(userDetails.getEmail(), userDetails.getPassword(), Boolean.TRUE,
-                    Boolean.TRUE, Boolean.TRUE, Boolean.TRUE);
-        } else {
-            return new LoginDetails(null, null, Boolean.TRUE,
-                    Boolean.TRUE, Boolean.TRUE, Boolean.FALSE);
+    private LoginDetails authenticate(String email) {
+        try {
+            // Fetches the user details from db using emailId
+            DocumentSnapshot userDocument = commonRepository.getDocument(ApplicationConstants.COLLECTION_SHORTENER_USERS, email);
+
+            // Checks if the user exists in the db and provide the details to spring security
+            if (userDocument.exists()) {
+                com.shortcut.shortener.domains.UserDetails userDetails
+                        = userDocument.toObject(com.shortcut.shortener.domains.UserDetails.class);
+                return new LoginDetails(userDetails.getEmail(), userDetails.getPassword(), Boolean.TRUE,
+                        Boolean.TRUE, Boolean.TRUE, Boolean.TRUE);
+            } else {
+                // User does not exist in db. security module does the authentication decision based on this.s
+                return new LoginDetails(null, null, Boolean.TRUE,
+                        Boolean.TRUE, Boolean.TRUE, Boolean.FALSE);
+            }
+
+        } catch (InterruptedException | ExecutionException e) {
+            Thread.currentThread().interrupt();
+            throw new ShortenerException(e.getMessage());
         }
     }
 }

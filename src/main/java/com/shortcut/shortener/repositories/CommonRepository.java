@@ -9,15 +9,21 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Repository class which contains all the db related common methods
+ * like fetching and saving to the db.
+ *
+ * @author Deepak Mohan
+ * @version 0.1
+ * @since 2022-05-28
  */
 @org.springframework.stereotype.Repository
 public class CommonRepository {
 
     /**
      * Common method to fetch details from database.
-     * @param collectionName
-     * @param documentIdentifier
-     * @return DocumentSnapshot
+     *
+     * @param collectionName name of the collection where data is stored
+     * @param documentIdentifier identifier for document in datastore
+     * @return DocumentSnapshot the document from db
      * @throws InterruptedException
      * @throws ExecutionException
      */
@@ -31,9 +37,10 @@ public class CommonRepository {
 
     /**
      * Common method to store a document in db
-     * @param object
-     * @param collectionName
-     * @param documentIdentifier
+     *
+     * @param object any object
+     * @param collectionName name of the collection where data to be stored
+     * @param documentIdentifier identifier for document in datastore
      * @param <T>
      */
     public <T> void createDocument(T object, String collectionName, String documentIdentifier){

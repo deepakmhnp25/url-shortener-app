@@ -7,6 +7,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * LoginDetails for security module
+ *
+ * @author Deepak Mohan
+ * @version 0.1
+ * @since 2022-05-28
+ */
 public class LoginDetails implements UserDetails {
 
     private String username;
