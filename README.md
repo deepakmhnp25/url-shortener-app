@@ -13,6 +13,25 @@ Execute the Below commands
 * docker pull deepakmhnp25/urlshortener:0.1
 * docker run -p8080:8080 deepakmhnp25/urlshortener:0.1
 ---
+
+
+## Architecture and Technical stack
+#### The design diagram
+
+![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/design%20diagram.PNG?raw=true)
+
+#### Tech Stack
+***
+* Spring Boot
+* Google Firestore datbase
+* Spring Security
+* Junit
+* Spring test (integration test)
+* Mockito
+* Maven
+* Docker
+
+
 ***
 ## Task and solution description
 #### 1. Service should let users register a new account and authenticate themselves.
@@ -43,19 +62,3 @@ Execute the Below commands
 ![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/shortened%20url.PNG?raw=true)
 
 ***
-
-## Architecture and Technical stack
-#### The design diagram
-
-![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/design%20diagram.PNG?raw=true)
-
-#### Tech Stack
-***
-* Spring Boot 
-* Google Firestore datbase
-* Spring Security
-* Junit
-* Spring test (integration test)
-* Mockito
-* Maven
-* Docker
