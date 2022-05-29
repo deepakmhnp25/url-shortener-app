@@ -22,8 +22,6 @@ Execute the Below commands
 * The UI is basic html.
 * The passwords are Bcryptencoded  for safer storage.
 
-<img src="C:\Users\deepa\Desktop\home page.PNG" width="500`"/>
-
 ![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/home%20page.PNG?raw=true)
 
 ***
