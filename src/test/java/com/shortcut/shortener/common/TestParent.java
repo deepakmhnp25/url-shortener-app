@@ -15,6 +15,11 @@ import com.shortcut.shortener.domains.UserDetails;
  */
 public class TestParent {
 
+    /**
+     * Get dummy user details test data
+     *
+     * @return
+     */
     public UserDetails getUserDetails() {
         UserDetails userDetails = new UserDetails();
         userDetails.setEmail("testemail@test.com");
@@ -22,6 +27,11 @@ public class TestParent {
         return userDetails;
     }
 
+    /**
+     * Get dummy url details test data
+     *
+     * @return
+     */
     public UrlDetails getUrlDetails(){
         UrlDetails urlDetails = new UrlDetails();
         urlDetails.setUrl(ApplicationConstants.BASE_URL);
