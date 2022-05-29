@@ -24,13 +24,15 @@ Execute the Below commands
 
 <img src="C:\Users\deepa\Desktop\home page.PNG" width="500`"/>
 
+![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/home%20page.PNG?raw=true)
+
 ***
 #### 2. Service should let authenticated users create shortened URLs.
 ***
 * Upon login user will be taken to a page where the user can input their long url and click the shorten button.
 * The result showing the shortened url will get listed on the same screen. 
 
-<img  height = "100" width="300" src="C:\Users\deepa\Desktop\login.PNG"/><img height="100" src="C:\Users\deepa\Desktop\shorten url.PNG"/>
+![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/login.PNG?raw=true)
 
 ***
 #### 3. Service should let any user use shortened URLs (e.g., follow redirects to original URLs).
@@ -38,7 +40,7 @@ Execute the Below commands
 * The shortened url that user created in the second step can be used anywhere regardless of the login status.
 * This url does not have any authentication / authorization required.
 
-<img src="C:\Users\deepa\Desktop\shortened url.PNG"/>
+![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/shortened%20url.PNG?raw=true)
 
 ***
 
