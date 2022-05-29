@@ -45,7 +45,7 @@ Execute the Below commands
 ## Architecture and Technical stack
 #### The design diagram
 
-<img src="C:\Users\deepa\Desktop\design diagram.PNG"/>
+![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/design%20diagram.PNG?raw=true)
 
 #### Tech Stack
 ***
