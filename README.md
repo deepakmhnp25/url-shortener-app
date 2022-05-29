@@ -62,3 +62,12 @@ Execute the Below commands
 ![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/shortened%20url.PNG?raw=true)
 
 ***
+
+## Improvements omitted due to time constraint
+***
+* role based user access
+* forgot password feature
+* storing the db private key in keystore ( example : google cloud secret manager, azure keystore)
+* connect user and url details  and display all the urls for the user up on logging in
+* extended Exception handling
+***
