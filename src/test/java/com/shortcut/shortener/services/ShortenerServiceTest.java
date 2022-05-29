@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
  * @since 2022-05-28
  */
 @ExtendWith(MockitoExtension.class)
-public class ShortenerServiceTest extends TestParent {
+class ShortenerServiceTest extends TestParent {
 
     @InjectMocks
     private ShortenerService shortenerService;
