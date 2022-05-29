@@ -16,5 +16,5 @@ public class EndpointConstants {
     public static final String SHORTEN = "/shorten";
     public static final String HOME = "/";
     public static final String REGISTER = "/register";
-    public static final String SHORTENED_URL = "/{urlHash}";
+    public static final String REDIRECT_SHORTENED_URL = "/{urlHash}";
 }

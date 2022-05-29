@@ -59,7 +59,7 @@ public class ShortenerController {
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    @GetMapping(EndpointConstants.SHORTENED_URL)
+    @GetMapping(EndpointConstants.REDIRECT_SHORTENED_URL)
     public RedirectView loadOriginalUrl(@PathVariable String urlHash) throws ExecutionException, InterruptedException {
         // Service call to get the original url using the hash value
         UrlDetails urlDetails = shortenerService.getOriginalUrl(urlHash);
