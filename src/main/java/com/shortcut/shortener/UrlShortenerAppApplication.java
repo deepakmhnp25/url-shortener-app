@@ -3,6 +3,8 @@ package com.shortcut.shortener;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
@@ -24,6 +26,8 @@ import java.io.InputStream;
 @SpringBootApplication
 public class UrlShortenerAppApplication {
 
+	private static Logger logger = LoggerFactory.getLogger(UrlShortenerAppApplication.class);
+
 	public static void main(String[] args) throws IOException {
 
 		// Loading the serviceAccountKey for firestore db
@@ -33,8 +37,10 @@ public class UrlShortenerAppApplication {
 				.setCredentials(GoogleCredentials.fromStream(inputStream))
 				.build();
 		FirebaseApp.initializeApp(options);
+		logger.info("Connection to firestore db successful");
 		// Application initialization
 		SpringApplication.run(UrlShortenerAppApplication.class, args);
+		logger.info("Application start up successful");
 	}
 
 }

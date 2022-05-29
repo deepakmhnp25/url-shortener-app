@@ -1,10 +1,12 @@
 package com.shortcut.shortener.services;
 
 import com.google.cloud.firestore.DocumentSnapshot;
-import com.shortcut.shortener.repositories.CommonRepository;
 import com.shortcut.shortener.constants.ApplicationConstants;
 import com.shortcut.shortener.domains.LoginDetails;
 import com.shortcut.shortener.exceptions.ShortenerException;
+import com.shortcut.shortener.repositories.CommonRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +24,8 @@ import java.util.concurrent.ExecutionException;
  */
 @Service
 public class LoginService implements UserDetailsService {
+
+    private static Logger logger = LoggerFactory.getLogger(LoginService.class);
 
     @Autowired
     private CommonRepository commonRepository;
@@ -53,10 +57,12 @@ public class LoginService implements UserDetailsService {
             if (userDocument.exists()) {
                 com.shortcut.shortener.domains.UserDetails userDetails
                         = userDocument.toObject(com.shortcut.shortener.domains.UserDetails.class);
+                logger.info("User found for email id {}", userDetails.getEmail());
                 return new LoginDetails(userDetails.getEmail(), userDetails.getPassword(), Boolean.TRUE,
                         Boolean.TRUE, Boolean.TRUE, Boolean.TRUE);
             } else {
                 // User does not exist in db. security module does the authentication decision based on this.s
+                logger.warn("No user found for the email id {} ", email);
                 return new LoginDetails(null, null, Boolean.TRUE,
                         Boolean.TRUE, Boolean.TRUE, Boolean.FALSE);
             }

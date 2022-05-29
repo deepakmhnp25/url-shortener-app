@@ -64,6 +64,8 @@ public class ShortenerService {
     public UrlDetails getOriginalUrl(String shortId) throws ExecutionException, InterruptedException {
         // Fetch the original url from the db using hashkey
         DocumentSnapshot document = commonRepository.getDocument(ApplicationConstants.COLLECTION_SHORTENER_URLS, shortId);
-        return document.toObject(UrlDetails.class);
+        UrlDetails urlDetails = document.toObject(UrlDetails.class);
+        logger.info("Shortened url {} and original url {}", urlDetails.getShortenedUrl(), urlDetails.getUrl());
+        return urlDetails;
     }
 }

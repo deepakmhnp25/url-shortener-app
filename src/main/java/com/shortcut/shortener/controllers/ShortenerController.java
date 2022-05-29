@@ -4,6 +4,8 @@ import com.shortcut.shortener.constants.ApplicationConstants;
 import com.shortcut.shortener.constants.EndpointConstants;
 import com.shortcut.shortener.domains.UrlDetails;
 import com.shortcut.shortener.services.ShortenerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,8 @@ import java.util.concurrent.ExecutionException;
  */
 @Controller
 public class ShortenerController {
+
+    private static Logger logger = LoggerFactory.getLogger(ShortenerController.class);
 
     @Autowired
     private ShortenerService shortenerService;
@@ -65,6 +69,7 @@ public class ShortenerController {
         UrlDetails urlDetails = shortenerService.getOriginalUrl(urlHash);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(urlDetails.getUrl());
+        logger.info("Redirecting to {} ", urlDetails.getUrl());
         return redirectView;
     }
 }

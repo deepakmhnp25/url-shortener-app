@@ -47,6 +47,7 @@ public class UserService {
             if (!document.exists()) {
                 userDetails.setPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
                 commonRepository.createDocument(userDetails, ApplicationConstants.COLLECTION_SHORTENER_USERS, userDetails.getEmail());
+                logger.info("User registered successfully for email {}", userDetails.getEmail());
                 return Boolean.TRUE;
             }
             // return false when user already exists
