@@ -1,5 +1,6 @@
 package com.shortcut.shortener.domains;
 
+import com.shortcut.shortener.constants.ApplicationConstants;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,7 +36,7 @@ public class LoginDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        return Arrays.asList(new SimpleGrantedAuthority(ApplicationConstants.ROLE_USER));
     }
 
     @Override

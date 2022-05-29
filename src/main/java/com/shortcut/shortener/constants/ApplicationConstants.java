@@ -25,4 +25,5 @@ public class ApplicationConstants {
     public static final String SHORTEN_URL_PAGE = "shorturl";
     public static final String ORIGINAL_URL = "originalurl";
     public static final String SHORTENED_URL = "shortenedurl";
+    public static final String ROLE_USER = "ROLE_USER";
 }
