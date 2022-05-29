@@ -32,6 +32,8 @@ Execute the Below commands
 
 ![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/login.PNG?raw=true)
 
+![alt text](https://github.com/deepakmhnp25/url-shortener-app/blob/master/screenshots/shorten%20url.PNG?raw=true)
+
 ***
 #### 3. Service should let any user use shortened URLs (e.g., follow redirects to original URLs).
 ***
