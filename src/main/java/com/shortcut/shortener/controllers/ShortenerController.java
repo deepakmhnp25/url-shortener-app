@@ -31,7 +31,7 @@ public class ShortenerController {
 
     @GetMapping(EndpointConstants.URL_SHORTENER)
     public String loadShortnerPage(){
-        return "shorturl";
+        return ApplicationConstants.SHORTEN_URL_PAGE;
     }
 
     /**
