@@ -5,7 +5,7 @@ This is an application which will create short URLs (like Bitly, Rebrandly, etc.
 
 ***
 ### Pre requisites : 
-* Docker Engine (Dowload link : https://www.docker.com/products/docker-desktop/)
+* Download, install and run Docker Engine (Dowload link : https://www.docker.com/products/docker-desktop/)
 
 Steps : 
 ---
