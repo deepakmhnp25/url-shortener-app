@@ -63,7 +63,7 @@ Execute the Below commands
 
 ***
 
-## Improvements omitted due to time constraint
+## Improvements ongoing
 ***
 * role based user access
 * forgot password feature
@@ -71,4 +71,5 @@ Execute the Below commands
 * connect user and url details  and display all the urls for the user up on logging in
 * extended Exception handling
 * input validations
+* deployment to kubernates
 ***
