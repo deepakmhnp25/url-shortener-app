@@ -6,7 +6,7 @@ jobs:
       runs-on: ubuntu-latest #specify which OS the job has to run. Github provides this OS platform
       steps:
         - name: Step one
-          uses: action/checkout@v2 # this is an action provided by github to checkout the code
+          uses: actions/checkout@v2 # this is an action provided by github to checkout the code
         - name: Step two
           run: env | sort #provide environment variable to the bash where command is going to get executed, and sort the output alphabetically
     job2:
